@@ -1,216 +1,182 @@
-
 import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Facebook, Menu, X, Star, Shield, Heart, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
-
-  const services = [
-    {
-      title: "Stomatologia zachowawcza",
-      description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
-      icon: "fas fa-tooth",
-      color: "from-amber-50 to-amber-100"
-    },
-    {
-      title: "Endodoncja mikroskopowa",
-      description: "Zaawansowane leczenie kanałowe pod kontrolą mikroskopu endodontycznego.",
-      icon: "fas fa-microscope",
-      color: "from-yellow-50 to-yellow-100"
-    },
-    {
-      title: "Tomografia CBCT 3D",
-      description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
-      icon: "fas fa-cube",
-      color: "from-amber-50 to-orange-100"
-    },
-    {
-      title: "Radiologia cyfrowa",
-      description: "Precyzyjne zdjęcia RTG i pantomogramy w technologii cyfrowej.",
-      icon: "fas fa-camera",
-      color: "from-yellow-50 to-amber-100"
-    },
-    {
-      title: "Biodentyna",
-      description: "Innowacyjna, biokompatybilna odbudowa przy głębokich ubytkach próchnicowych.",
-      icon: "fas fa-shield-alt",
-      color: "from-green-50 to-emerald-100"
-    },
-    {
-      title: "Biżuteria nazębna",
-      description: "Ekskluzywne kryształki i ozdoby dentystyczne najwyższej jakości.",
-      icon: "fas fa-gem",
-      color: "from-purple-50 to-pink-100"
-    },
-    {
-      title: "ICON - technologia infiltracji",
-      description: "Rewolucyjna metoda usuwania białych plam bez tradycyjnego wiercenia.",
-      icon: "fas fa-magic",
-      color: "from-blue-50 to-cyan-100"
-    },
-    {
-      title: "EMS Airflow",
-      description: "Bezbolesne, ultra-nowoczesne usuwanie osadów i przebarwień.",
-      icon: "fas fa-wind",
-      color: "from-sky-50 to-blue-100"
-    },
-    {
-      title: "Stomatologia estetyczna",
-      description: "Artystyczne licówki kompozytowe i zaawansowane techniki bonding.",
-      icon: "fas fa-palette",
-      color: "from-rose-50 to-pink-100"
-    },
-    {
-      title: "Protetyka ekskluzywna",
-      description: "Ceramiczne korony, mosty i szyny relaksacyjne premium.",
-      icon: "fas fa-crown",
-      color: "from-amber-50 to-yellow-100"
-    }
-  ];
-
-  const advantages = [
-    {
-      icon: Award,
-      title: "Wieloletnia ekspertyza",
-      description: "Dekady doświadczenia w najwyższej jakości opiece stomatologicznej",
-      gradient: "from-amber-400 to-yellow-500"
-    },
-    {
-      icon: Star,
-      title: "Technologia premium",
-      description: "Najnowocześniejszy sprzęt i materiały światowej klasy",
-      gradient: "from-yellow-400 to-amber-500"
-    },
-    {
-      icon: Heart,
-      title: "Indywidualna opieka",
-      description: "Holistyczne podejście dostosowane do unikalnych potrzeb",
-      gradient: "from-rose-400 to-pink-500"
-    },
-    {
-      icon: Shield,
-      title: "Najwyższe standardy",
-      description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa",
-      gradient: "from-green-400 to-emerald-500"
-    }
-  ];
-
-  const galleryImages = [
-    { id: 1, title: "Główne stanowisko lecznicze", icon: "fas fa-user-md" },
-    { id: 2, title: "Tomograf CBCT najnowszej generacji", icon: "fas fa-cube" },
-    { id: 3, title: "Mikroskop endodontyczny", icon: "fas fa-microscope" },
-    { id: 4, title: "Stanowisko diagnostyczne", icon: "fas fa-search" },
-    { id: 5, title: "System EMS Airflow", icon: "fas fa-wind" },
-    { id: 6, title: "Elegancka poczekalnia", icon: "fas fa-couch" }
-  ];
-
+  const services = [{
+    title: "Stomatologia zachowawcza",
+    description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
+    icon: "fas fa-tooth",
+    color: "from-amber-50 to-amber-100"
+  }, {
+    title: "Endodoncja mikroskopowa",
+    description: "Zaawansowane leczenie kanałowe pod kontrolą mikroskopu endodontycznego.",
+    icon: "fas fa-microscope",
+    color: "from-yellow-50 to-yellow-100"
+  }, {
+    title: "Tomografia CBCT 3D",
+    description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
+    icon: "fas fa-cube",
+    color: "from-amber-50 to-orange-100"
+  }, {
+    title: "Radiologia cyfrowa",
+    description: "Precyzyjne zdjęcia RTG i pantomogramy w technologii cyfrowej.",
+    icon: "fas fa-camera",
+    color: "from-yellow-50 to-amber-100"
+  }, {
+    title: "Biodentyna",
+    description: "Innowacyjna, biokompatybilna odbudowa przy głębokich ubytkach próchnicowych.",
+    icon: "fas fa-shield-alt",
+    color: "from-green-50 to-emerald-100"
+  }, {
+    title: "Biżuteria nazębna",
+    description: "Ekskluzywne kryształki i ozdoby dentystyczne najwyższej jakości.",
+    icon: "fas fa-gem",
+    color: "from-purple-50 to-pink-100"
+  }, {
+    title: "ICON - technologia infiltracji",
+    description: "Rewolucyjna metoda usuwania białych plam bez tradycyjnego wiercenia.",
+    icon: "fas fa-magic",
+    color: "from-blue-50 to-cyan-100"
+  }, {
+    title: "EMS Airflow",
+    description: "Bezbolesne, ultra-nowoczesne usuwanie osadów i przebarwień.",
+    icon: "fas fa-wind",
+    color: "from-sky-50 to-blue-100"
+  }, {
+    title: "Stomatologia estetyczna",
+    description: "Artystyczne licówki kompozytowe i zaawansowane techniki bonding.",
+    icon: "fas fa-palette",
+    color: "from-rose-50 to-pink-100"
+  }, {
+    title: "Protetyka ekskluzywna",
+    description: "Ceramiczne korony, mosty i szyny relaksacyjne premium.",
+    icon: "fas fa-crown",
+    color: "from-amber-50 to-yellow-100"
+  }];
+  const advantages = [{
+    icon: Award,
+    title: "Wieloletnia ekspertyza",
+    description: "Dekady doświadczenia w najwyższej jakości opiece stomatologicznej",
+    gradient: "from-amber-400 to-yellow-500"
+  }, {
+    icon: Star,
+    title: "Technologia premium",
+    description: "Najnowocześniejszy sprzęt i materiały światowej klasy",
+    gradient: "from-yellow-400 to-amber-500"
+  }, {
+    icon: Heart,
+    title: "Indywidualna opieka",
+    description: "Holistyczne podejście dostosowane do unikalnych potrzeb",
+    gradient: "from-rose-400 to-pink-500"
+  }, {
+    icon: Shield,
+    title: "Najwyższe standardy",
+    description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa",
+    gradient: "from-green-400 to-emerald-500"
+  }];
+  const galleryImages = [{
+    id: 1,
+    title: "Główne stanowisko lecznicze",
+    icon: "fas fa-user-md"
+  }, {
+    id: 2,
+    title: "Tomograf CBCT najnowszej generacji",
+    icon: "fas fa-cube"
+  }, {
+    id: 3,
+    title: "Mikroskop endodontyczny",
+    icon: "fas fa-microscope"
+  }, {
+    id: 4,
+    title: "Stanowisko diagnostyczne",
+    icon: "fas fa-search"
+  }, {
+    id: 5,
+    title: "System EMS Airflow",
+    icon: "fas fa-wind"
+  }, {
+    id: 6,
+    title: "Elegancka poczekalnia",
+    icon: "fas fa-couch"
+  }];
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
       rootMargin: '-80px 0px'
     };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           setActiveSection(entry.target.id);
         }
       });
     }, observerOptions);
-
-    document.querySelectorAll('.fade-in-luxury, .scale-in-luxury').forEach((el) => {
+    document.querySelectorAll('.fade-in-luxury, .scale-in-luxury').forEach(el => {
       observer.observe(el);
     });
-
-    document.querySelectorAll('section[id]').forEach((section) => {
+    document.querySelectorAll('section[id]').forEach(section => {
       observer.observe(section);
     });
-
     return () => observer.disconnect();
   }, []);
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
+      setCurrentSlide(prev => (prev + 1) % galleryImages.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
       setIsMenuOpen(false);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       {/* Elegant Navigation */}
       <nav className="bg-white/95 backdrop-blur-md shadow-sm fixed w-full top-0 z-50 border-b border-yellow-100">
         <div className="container-max">
           <div className="flex justify-between items-center py-5">
             <div className="flex items-center space-x-6">
-              <img 
-                src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" 
-                alt="Joanna Śliwińska Stomatologia Logo" 
-                className="h-14 w-auto logo-elegant"
-              />
+              <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia Logo" className="h-14 w-auto logo-elegant" />
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-12">
-              {['home', 'about', 'services', 'gallery', 'contact'].map((section) => (
-                <button 
-                  key={section}
-                  onClick={() => scrollToSection(section)} 
-                  className={`text-gray-700 hover:text-yellow-700 transition-all duration-300 font-medium text-lg ${
-                    activeSection === section ? 'nav-active' : ''
-                  }`}
-                >
+              {['home', 'about', 'services', 'gallery', 'contact'].map(section => <button key={section} onClick={() => scrollToSection(section)} className={`text-gray-700 hover:text-yellow-700 transition-all duration-300 font-medium text-lg ${activeSection === section ? 'nav-active' : ''}`}>
                   {section === 'home' && 'Strona główna'}
                   {section === 'about' && 'O praktyce'}
                   {section === 'services' && 'Usługi'}
                   {section === 'gallery' && 'Gabinet'}
                   {section === 'contact' && 'Kontakt'}
-                </button>
-              ))}
+                </button>)}
             </div>
 
             {/* Mobile menu button */}
-            <button 
-              className="md:hidden p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
           </div>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-yellow-100">
+          {isMenuOpen && <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-yellow-100">
               <div className="py-6 space-y-4">
-                {['home', 'about', 'services', 'gallery', 'contact'].map((section) => (
-                  <button 
-                    key={section}
-                    onClick={() => scrollToSection(section)} 
-                    className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 text-lg font-medium"
-                  >
+                {['home', 'about', 'services', 'gallery', 'contact'].map(section => <button key={section} onClick={() => scrollToSection(section)} className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 text-lg font-medium">
                     {section === 'home' && 'Strona główna'}
                     {section === 'about' && 'O praktyce'}
                     {section === 'services' && 'Usługi'}
                     {section === 'gallery' && 'Gabinet'}
                     {section === 'contact' && 'Kontakt'}
-                  </button>
-                ))}
+                  </button>)}
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </nav>
 
@@ -228,15 +194,9 @@ const Index = () => {
             <p className="text-xl md:text-2xl mb-6 opacity-85 font-light">
               Kuznocin 91E • 96-500 Kuznocin
             </p>
-            <p className="text-lg md:text-xl mb-16 opacity-75 max-w-3xl mx-auto text-refined leading-relaxed">
-              Ekskluzywny gabinet stomatologiczny łączący wieloletnie doświadczenie 
-              z najnowocześniejszymi technologiami medycznymi. Indywidualna opieka na najwyższym poziomie.
-            </p>
+            <p className="text-lg md:text-xl mb-16 opacity-75 max-w-3xl mx-auto text-refined leading-relaxed font-extrabold">Nowoczesny gabinet stomatologiczny łączący wieloletnie doświadczenie z  nowoczesnymi technologiami medycznymi. Indywidualna opieka na najwyższym poziomie.</p>
             <div className="flex flex-col sm:flex-row gap-8 justify-center">
-              <button 
-                className="btn-luxury-outline"
-                onClick={() => scrollToSection('services')}
-              >
+              <button onClick={() => scrollToSection('services')} className="btn-luxury-outline text-slate-950">
                 Poznaj nasze usługi
               </button>
             </div>
@@ -258,8 +218,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {advantages.map((advantage, index) => (
-              <Card key={index} className="text-center card-luxury border-0 shadow-lg bg-white scale-in-luxury">
+            {advantages.map((advantage, index) => <Card key={index} className="text-center card-luxury border-0 shadow-lg bg-white scale-in-luxury">
                 <CardHeader>
                   <div className={`w-24 h-24 bg-gradient-to-br ${advantage.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 icon-breathe shadow-lg`}>
                     <advantage.icon className="w-12 h-12 text-white" />
@@ -271,8 +230,7 @@ const Index = () => {
                     {advantage.description}
                   </CardDescription>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -291,8 +249,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {services.map((service, index) => (
-              <div key={index} className="service-card scale-in-luxury">
+            {services.map((service, index) => <div key={index} className="service-card scale-in-luxury">
                 <div className="flex items-start space-x-6 mb-6">
                   <div className={`w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center shadow-md`}>
                     <i className={`${service.icon} text-gray-700 text-2xl`}></i>
@@ -304,8 +261,7 @@ const Index = () => {
                     </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -322,33 +278,20 @@ const Index = () => {
           
           <div className="gallery-luxury rounded-3xl p-12 shadow-2xl fade-in-luxury">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {galleryImages.map((item, index) => (
-                <div 
-                  key={item.id} 
-                  className={`bg-gradient-to-br from-yellow-50 to-amber-100 aspect-video rounded-3xl flex flex-col items-center justify-center card-luxury transition-all duration-700 ${
-                    Math.floor(index / 3) === Math.floor(currentSlide / 3) ? 'opacity-100 scale-100' : 'opacity-60 scale-95'
-                  }`}
-                >
+              {galleryImages.map((item, index) => <div key={item.id} className={`bg-gradient-to-br from-yellow-50 to-amber-100 aspect-video rounded-3xl flex flex-col items-center justify-center card-luxury transition-all duration-700 ${Math.floor(index / 3) === Math.floor(currentSlide / 3) ? 'opacity-100 scale-100' : 'opacity-60 scale-95'}`}>
                   <div className="text-center">
                     <div className="w-16 h-16 luxury-gradient rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                       <i className={`${item.icon} text-white text-2xl`}></i>
                     </div>
                     <p className="text-yellow-800 font-medium text-lg heading-luxury">{item.title}</p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
             
             <div className="flex justify-center mt-12 space-x-3">
-              {Array.from({ length: Math.ceil(galleryImages.length / 3) }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index * 3)}
-                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                    Math.floor(currentSlide / 3) === index ? 'bg-yellow-600 scale-125' : 'bg-yellow-300'
-                  }`}
-                />
-              ))}
+              {Array.from({
+              length: Math.ceil(galleryImages.length / 3)
+            }).map((_, index) => <button key={index} onClick={() => setCurrentSlide(index * 3)} className={`w-4 h-4 rounded-full transition-all duration-300 ${Math.floor(currentSlide / 3) === index ? 'bg-yellow-600 scale-125' : 'bg-yellow-300'}`} />)}
             </div>
           </div>
         </div>
@@ -487,17 +430,11 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16">
         <div className="container-max text-center">
-          <img 
-            src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" 
-            alt="Joanna Śliwińska Stomatologia Logo" 
-            className="h-20 w-auto mx-auto mb-8 opacity-80 logo-elegant"
-          />
+          <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia Logo" className="h-20 w-auto mx-auto mb-8 opacity-80 logo-elegant" />
           <p className="text-xl text-refined">&copy; 2025 Joanna Śliwińska Stomatologia. Wszelkie prawa zastrzeżone.</p>
           <p className="text-gray-400 mt-4 text-lg text-refined">Stworzone z pasją dla zdrowia Twojego uśmiechu</p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
