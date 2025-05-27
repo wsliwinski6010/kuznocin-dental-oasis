@@ -196,7 +196,7 @@ const Index = () => {
             </p>
             <p className="text-lg md:text-xl mb-16 opacity-75 max-w-3xl mx-auto text-refined leading-relaxed font-extrabold">Nowoczesny gabinet stomatologiczny łączący wieloletnie doświadczenie z  nowoczesnymi technologiami medycznymi. Indywidualna opieka na najwyższym poziomie.</p>
             <div className="flex flex-col sm:flex-row gap-8 justify-center">
-              <button onClick={() => scrollToSection('services')} className="btn-luxury-outline text-slate-950">
+              <button onClick={() => scrollToSection('services')} className="btn-luxury-outline text-slate-50">
                 Poznaj nasze usługi
               </button>
             </div>
