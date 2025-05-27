@@ -209,12 +209,7 @@ const Index = () => {
         <div className="container-max">
           <div className="text-center mb-20 fade-in-luxury">
             <h2 className="text-5xl md:text-6xl font-light mb-8 text-luxury-gradient heading-luxury">O naszej praktyce</h2>
-            <p className="text-xl text-gray-700 max-w-5xl mx-auto leading-relaxed text-refined">
-              Nasza praktyka stomatologiczna to przestrzeń, gdzie łączymy artyzm z nauką, 
-              tradycję z innowacją. Każdy zabieg wykonujemy z najwyższą precyzją, 
-              wykorzystując materiały i technologie światowej klasy. Nasza filozofia opiera się 
-              na holistycznym podejściu do zdrowia jamy ustnej i budowaniu długotrwałych relacji z pacjentami.
-            </p>
+            <p className="text-xl text-gray-700 max-w-5xl mx-auto leading-relaxed text-refined">Nasza praktyka stomatologiczna to przestrzeń, gdzie łączymy doświadczenie z nauką, tradycję z innowacją. Każdy zabieg wykonujemy z najwyższą precyzją, wykorzystując materiały i technologie światowej klasy. Nasza filozofia opiera się na holistycznym podejściu do zdrowia jamy ustnej i budowaniu długotrwałych relacji z pacjentami.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
