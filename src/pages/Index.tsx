@@ -148,10 +148,7 @@ const Index = () => {
           <p className="hero-subtitle mb-8">
             Stomatologia
           </p>
-          <p className="hero-description mb-12">
-            Ekskluzywny gabinet stomatologiczny łączący wieloletnie doświadczenie 
-            z najnowoczesnymi technologiami medycznymi
-          </p>
+          <p className="hero-description mb-12">Stomatologia blisko Ciebie, komfort i indywidualne leczenie dla każdego.</p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <button onClick={() => scrollToSection('contact')} className="btn-primary">
               Umów wizytę
