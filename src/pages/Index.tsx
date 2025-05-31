@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,8 +15,8 @@ const Index = () => {
       icon: "🦷",
     },
     {
-      title: "Endodoncja mikroskopowa", 
-      description: "Zaawansowane leczenie kanałowe pod kontrolą mikroskopu endodontycznego.",
+      title: "Endodoncja (leczenie kanałowe)", 
+      description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
       icon: "🔬",
     },
     {
@@ -271,9 +270,7 @@ const Index = () => {
             </CardHeader>
             <CardContent>
               <p className="team-bio">
-                Absolwentka Uniwersytetu Medycznego z wieloletnim doświadczeniem klinicznym. 
-                Specjalizuje się w endodoncji mikroskopowej i stomatologii estetycznej. 
-                Członek prestiżowych towarzystw naukowych.
+                Absolwentka Uniwersytetu Medycznego, z wieloletnim stażem specjalizuje się w stomatologii zachowawczej i endodoncji. Regularnie uczestniczy w szkoleniach i konferencjach naukowych, aby zapewnić pacjentom najwyższą jakość leczenia z wykorzystaniem najnowocześniejszych metod i technologii.
               </p>
             </CardContent>
           </Card>
