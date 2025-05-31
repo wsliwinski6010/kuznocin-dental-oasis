@@ -5,228 +5,236 @@
 
 @layer base {
   :root {
+    /* Kolorystyka nawiązująca do złotego logo */
+    --cream: #FBF8F1;
+    --light-cream: #F8F4E8;
+    --light-gold: #F5E6A8;
+    --gold: #D4AF37;
+    --deep-gold: #B8941F;
+    --dark-brown: #2C1810;
+    --medium-brown: #4A3426;
+    --text-dark: #1F1611;
+    --text-medium: #5D4E3A;
+    --text-light: #8B7355;
+    
+    /* Shadcn variables */
     --background: 0 0% 100%;
     --foreground: 0 0% 5%;
-
     --card: 0 0% 100%;
     --card-foreground: 0 0% 5%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 5%;
-
-    /* Elegant gold palette matching logo */
-    --primary: 35 85% 45%;
+    --primary: 43 74% 49%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 35 20% 92%;
+    --secondary: 43 20% 92%;
     --secondary-foreground: 0 0% 5%;
-
-    --muted: 35 15% 95%;
+    --muted: 43 15% 95%;
     --muted-foreground: 0 0% 40%;
-
-    --accent: 35 85% 85%;
+    --accent: 43 74% 85%;
     --accent-foreground: 0 0% 5%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 35 25% 88%;
-    --input: 35 25% 88%;
-    --ring: 35 85% 45%;
-
+    --border: 43 25% 88%;
+    --input: 43 25% 88%;
+    --ring: 43 74% 49%;
     --radius: 0.75rem;
+  }
 
-    /* Custom elegant colors */
-    --luxury-gold: 35 85% 45%;
-    --luxury-gold-light: 35 75% 65%;
-    --luxury-gold-dark: 35 95% 25%;
-    --luxury-cream: 35 15% 96%;
-    --luxury-black: 0 0% 5%;
-    --luxury-white: 0 0% 100%;
-    --warm-gray: 35 5% 95%;
+  * {
+    @apply border-border;
   }
 
   body {
-    font-family: 'Crimson Text', 'Georgia', serif;
+    font-family: 'Inter', 'system-ui', sans-serif;
     @apply bg-background text-foreground antialiased;
     scroll-behavior: smooth;
     line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-family: 'Inter', 'system-ui', sans-serif;
     font-weight: 400;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 }
 
-.luxury-gradient {
-  background: linear-gradient(135deg, 
-    hsl(var(--luxury-gold-dark)) 0%, 
-    hsl(var(--luxury-gold)) 50%, 
-    hsl(var(--luxury-gold-light)) 100%
-  );
-}
-
-.luxury-gradient-subtle {
-  background: linear-gradient(135deg, 
-    hsl(var(--luxury-cream)) 0%, 
-    hsl(var(--warm-gray)) 100%
-  );
-}
-
-.section-padding {
-  @apply py-24 px-6 sm:px-8 lg:px-12;
-}
-
-.container-max {
-  @apply max-w-6xl mx-auto;
-}
-
-.card-luxury {
-  @apply transition-all duration-700 hover:shadow-2xl hover:-translate-y-3;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
-}
-
-.text-luxury-gradient {
-  background: linear-gradient(135deg, 
-    hsl(var(--luxury-gold-dark)), 
-    hsl(var(--luxury-gold))
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Elegant animations */
-.fade-in-luxury {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.fade-in-luxury.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.scale-in-luxury {
-  transform: scale(0.95);
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.scale-in-luxury.visible {
-  transform: scale(1);
-  opacity: 1;
-}
-
-/* Sophisticated icon animations */
-.icon-breathe {
-  animation: breathe 4s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-/* Navigation elegance */
-.nav-active {
-  @apply text-yellow-700 font-medium;
-  position: relative;
-}
-
-.nav-active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, hsl(var(--luxury-gold-dark)), hsl(var(--luxury-gold)));
-  border-radius: 1px;
-}
-
-/* Luxury buttons */
-.btn-luxury {
-  @apply luxury-gradient text-white px-10 py-4 rounded-full font-medium text-lg transition-all duration-500;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  letter-spacing: 0.5px;
-}
-
-.btn-luxury:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-}
-
-.btn-luxury-outline {
-  @apply border-2 border-yellow-600 text-yellow-700 px-10 py-4 rounded-full font-medium text-lg transition-all duration-500;
-  letter-spacing: 0.5px;
-}
-
-.btn-luxury-outline:hover {
-  @apply luxury-gradient text-white;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Gallery sophistication */
-.gallery-luxury {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 248, 248, 0.9));
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Service cards elegance */
-.service-card {
-  @apply bg-white rounded-3xl p-8 border border-yellow-100 transition-all duration-700;
-  background: linear-gradient(145deg, #ffffff 0%, #fefefe 100%);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-}
-
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-  border-color: hsl(var(--luxury-gold-light));
-}
-
-/* Typography refinements */
-.heading-luxury {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-
-.text-refined {
-  font-family: 'Crimson Text', serif;
-  line-height: 1.7;
-  color: rgba(0, 0, 0, 0.8);
-}
-
-/* Logo sophistication */
-.logo-elegant {
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
-  transition: all 0.5s ease;
-}
-
-.logo-elegant:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.15));
-}
-
-/* Responsive elegance */
-@media (max-width: 768px) {
-  .section-padding {
-    @apply py-16 px-4;
-  }
+@layer utilities {
+  /* Custom color classes */
+  .bg-cream { background-color: var(--cream); }
+  .bg-light-cream { background-color: var(--light-cream); }
+  .bg-light-gold { background-color: var(--light-gold); }
+  .bg-gold { background-color: var(--gold); }
+  .bg-deep-gold { background-color: var(--deep-gold); }
+  .bg-dark-brown { background-color: var(--dark-brown); }
+  .bg-medium-brown { background-color: var(--medium-brown); }
   
-  .heading-luxury {
+  .text-cream { color: var(--cream); }
+  .text-gold { color: var(--gold); }
+  .text-deep-gold { color: var(--deep-gold); }
+  .text-dark-brown { color: var(--dark-brown); }
+  .text-medium-brown { color: var(--medium-brown); }
+  .text-dark { color: var(--text-dark); }
+  .text-medium { color: var(--text-medium); }
+  .text-light { color: var(--text-light); }
+
+  /* Layout utilities */
+  .section-padding {
+    @apply py-20 px-6 lg:px-8;
+  }
+}
+
+@layer components {
+  /* Navigation */
+  .nav-link {
+    @apply relative text-dark-brown font-medium transition-all duration-300 hover:text-gold;
+    position: relative;
+  }
+
+  .nav-link.active {
+    @apply text-gold;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--gold);
+    border-radius: 1px;
+  }
+
+  /* Typography */
+  .hero-title {
+    @apply text-5xl md:text-7xl lg:text-8xl font-light text-dark-brown mb-4;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+  }
+
+  .hero-subtitle {
+    @apply text-2xl md:text-4xl lg:text-5xl font-light text-medium-brown;
     letter-spacing: -0.02em;
+  }
+
+  .hero-description {
+    @apply text-lg md:text-xl text-text-medium max-w-2xl mx-auto leading-relaxed;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-light text-dark-brown mb-6;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .section-description {
+    @apply text-lg md:text-xl text-text-medium leading-relaxed;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-gold text-white px-8 py-4 rounded-full font-medium text-lg transition-all duration-500 hover:bg-deep-gold hover:shadow-lg hover:-translate-y-1;
+    letter-spacing: 0.025em;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-gold text-gold px-8 py-4 rounded-full font-medium text-lg transition-all duration-500 hover:bg-gold hover:text-white hover:shadow-lg hover:-translate-y-1;
+    letter-spacing: 0.025em;
+  }
+
+  /* Cards */
+  .advantage-card {
+    @apply bg-white border-0 shadow-lg rounded-2xl p-6 transition-all duration-500 hover:shadow-xl hover:-translate-y-2;
+  }
+
+  .advantage-icon {
+    @apply w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mx-auto mb-4;
+  }
+
+  .advantage-title {
+    @apply text-xl font-medium text-dark-brown mb-3;
+  }
+
+  .advantage-description {
+    @apply text-text-medium leading-relaxed;
+  }
+
+  .service-card {
+    @apply bg-white rounded-2xl p-8 shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-2;
+  }
+
+  .service-icon {
+    @apply text-4xl mb-4;
+  }
+
+  .service-title {
+    @apply text-xl font-medium text-dark-brown mb-3;
+  }
+
+  .service-description {
+    @apply text-text-medium leading-relaxed;
+  }
+
+  .team-card {
+    @apply bg-white border-0 shadow-xl rounded-3xl p-8 max-w-2xl mx-auto;
+  }
+
+  .team-avatar {
+    @apply w-32 h-32 bg-gold rounded-full flex items-center justify-center mx-auto mb-6 text-4xl font-light text-white;
+  }
+
+  .team-name {
+    @apply text-3xl font-light text-dark-brown mb-2;
+  }
+
+  .team-specialty {
+    @apply text-xl text-gold font-medium mb-6;
+  }
+
+  .team-bio {
+    @apply text-text-medium leading-relaxed text-lg;
+  }
+
+  .contact-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 text-white;
+  }
+
+  .contact-icon {
+    @apply w-12 h-12 bg-gold rounded-xl flex items-center justify-center mx-auto mb-4;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .section-padding {
+      @apply py-16 px-4;
+    }
+    
+    .hero-title {
+      @apply text-4xl md:text-5xl;
+    }
+
+    .hero-subtitle {
+      @apply text-xl md:text-2xl;
+    }
+
+    .section-title {
+      @apply text-3xl md:text-4xl;
+    }
   }
 }
