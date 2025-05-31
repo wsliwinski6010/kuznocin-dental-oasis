@@ -2,57 +2,94 @@ import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
-  const services = [{
-    title: "Stomatologia zachowawcza",
-    description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
-    icon: "🦷"
-  }, {
-    title: "Endodoncja (leczenie kanałowe)",
-    description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
-    icon: "🔬"
-  }, {
-    title: "Tomografia CBCT 3D",
-    description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
-    icon: "📷"
-  }, {
-    title: "Radiologia cyfrowa",
-    description: "Precyzyjne zdjęcia RTG i pantomogramy w technologii cyfrowej.",
-    icon: "💻"
-  }, {
-    title: "Biodentyna",
-    description: "Innowacyjna, biokompatybilna odbudowa przy głębokich ubytkach próchnicowych.",
-    icon: "🛡️"
-  }, {
-    title: "Biżuteria nazębna",
-    description: "Ekskluzywne kryształki i ozdoby dentystyczne najwyższej jakości.",
-    icon: "💎"
-  }];
-  const advantages = [{
-    icon: Award,
-    title: "Wieloletnia ekspertyza",
-    description: "Dekady doświadczenia w najwyższej jakości opiece stomatologicznej"
-  }, {
-    icon: Star,
-    title: "Technologia premium",
-    description: "Najnowocześniejszy sprzęt i materiały światowej klasy"
-  }, {
-    icon: Heart,
-    title: "Indywidualna opieka",
-    description: "Holistyczne podejście dostosowane do unikalnych potrzeb"
-  }, {
-    icon: Shield,
-    title: "Najwyższe standardy",
-    description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
-  }];
+
+  const services = [
+    {
+      title: "Stomatologia zachowawcza",
+      description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
+      icon: "🦷"
+    },
+    {
+      title: "Endodoncja (leczenie kanałowe)",
+      description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
+      icon: "🔧"
+    },
+    {
+      title: "Tomografia CBCT 3D",
+      description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
+      icon: "📷"
+    },
+    {
+      title: "Radiologia cyfrowa",
+      description: "Precyzyjne zdjęcia RTG i pantomogramy w technologii cyfrowej.",
+      icon: "💻"
+    },
+    {
+      title: "Biodentyna",
+      description: "Innowacyjna, biokompatybilna odbudowa przy głębokich ubytkach próchnicowych.",
+      icon: "🛡️"
+    },
+    {
+      title: "Biżuteria nazębna",
+      description: "Ekskluzywne kryształki i ozdoby dentystyczne najwyższej jakości.",
+      icon: "💎"
+    },
+    {
+      title: "ICON - usuwanie białych plam",
+      description: "Infiltracja żywicą: nowoczesna metoda nieinwazyjnego usuwania białych plam na szkliwie bez wiercenia.",
+      icon: "✨"
+    },
+    {
+      title: "EMS Airflow",
+      description: "Rewolucja w higienie jamy ustnej! AIRFLOW® PROPHYLAXIS MASTER - bezbolesne i szybkie usunięcie osadów, przebarwień i biofilmu bakteryjnego. Natychmiastowy efekt bielszego uśmiechu!",
+      icon: "💨"
+    },
+    {
+      title: "Stomatologia estetyczna",
+      description: "Nowoczesne licówki kompozytowe w technologii flow injection oraz bonding - precyzyjna, przewidywalna i minimalnie inwazyjna poprawa uśmiechu.",
+      icon: "😊"
+    },
+    {
+      title: "Protetyka stomatologiczna",
+      description: "Korony ceramiczne, mosty protetyczne oraz indywidualne szyny relaksacyjne do leczenia bruksizmu.",
+      icon: "👑"
+    }
+  ];
+
+  const advantages = [
+    {
+      icon: Award,
+      title: "Wieloletnia ekspertyza",
+      description: "Dekady doświadczenia w najwyższej jakości opiece stomatologicznej"
+    },
+    {
+      icon: Star,
+      title: "Technologia premium",
+      description: "Najnowocześniejszy sprzęt i materiały światowej klasy"
+    },
+    {
+      icon: Heart,
+      title: "Indywidualna opieka",
+      description: "Holistyczne podejście dostosowane do unikalnych potrzeb"
+    },
+    {
+      icon: Shield,
+      title: "Najwyższe standardy",
+      description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
+    }
+  ];
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.3,
@@ -70,6 +107,7 @@ const Index = () => {
     });
     return () => observer.disconnect();
   }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -79,7 +117,9 @@ const Index = () => {
       setIsMenuOpen(false);
     }
   };
-  return <div className="min-h-screen bg-cream">
+
+  return (
+    <div className="min-h-screen bg-cream">
       {/* Navigation */}
       <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -190,11 +230,13 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => <div key={index} className="service-card">
+            {services.map((service, index) => (
+              <div key={index} className="service-card">
                 <div className="service-icon">{service.icon}</div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -296,6 +338,8 @@ const Index = () => {
           <p className="text-gray-400 mt-2">Stworzone z pasją dla zdrowia Twojego uśmiechu</p>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
