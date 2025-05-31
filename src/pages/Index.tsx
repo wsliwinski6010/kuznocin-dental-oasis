@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Tooth, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
+
   const services = [{
     title: "Stomatologia zachowawcza",
     description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
-    icon: "🦷"
+    icon: Tooth,
+    isLucideIcon: true
   }, {
     title: "Endodoncja (leczenie kanałowe)",
     description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
@@ -18,37 +21,45 @@ const Index = () => {
   }, {
     title: "Tomografia CBCT 3D",
     description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
-    icon: "📷"
+    icon: Camera,
+    isLucideIcon: true
   }, {
     title: "Radiologia cyfrowa",
     description: "Precyzyjne zdjęcia RTG i pantomogramy w technologii cyfrowej.",
-    icon: "💻"
+    icon: Monitor,
+    isLucideIcon: true
   }, {
     title: "Biodentyna",
     description: "Innowacyjna, biokompatybilna odbudowa przy głębokich ubytkach próchnicowych.",
-    icon: "🛡️"
+    icon: Shield,
+    isLucideIcon: true
   }, {
     title: "Biżuteria nazębna",
     description: "Ekskluzywne kryształki i ozdoby dentystyczne najwyższej jakości.",
-    icon: "💎"
+    icon: Gem,
+    isLucideIcon: true
   }, {
     title: "ICON - usuwanie białych plam",
     description: "Infiltracja żywicą: nowoczesna metoda nieinwazyjnego usuwania białych plam na szkliwie bez wiercenia.",
-    icon: "✨"
+    icon: Sparkles,
+    isLucideIcon: true
   }, {
     title: "EMS Airflow",
     description: "Rewolucja w higienie jamy ustnej! AIRFLOW® PROPHYLAXIS MASTER - bezbolesne i szybkie usunięcie osadów, przebarwień i biofilmu bakteryjnego. Natychmiastowy efekt bielszego uśmiechu!",
-    icon: "/lovable-uploads/211946c1-bf9e-4f97-8423-8ab5fc95263f.png",
-    isImage: true
+    icon: Wind,
+    isLucideIcon: true
   }, {
     title: "Stomatologia estetyczna",
     description: "Nowoczesne licówki kompozytowe w technologii flow injection oraz bonding - precyzyjna, przewidywalna i minimalnie inwazyjna poprawa uśmiechu.",
-    icon: "😊"
+    icon: Smile,
+    isLucideIcon: true
   }, {
     title: "Protetyka stomatologiczna",
     description: "Korony ceramiczne, mosty protetyczne oraz indywidualne szyny relaksacyjne do leczenia bruksizmu.",
-    icon: "👑"
+    icon: Crown,
+    isLucideIcon: true
   }];
+
   const advantages = [{
     icon: Award,
     title: "Wieloletnia ekspertyza",
@@ -66,11 +77,13 @@ const Index = () => {
     title: "Najwyższe standardy",
     description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
   }];
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.3,
@@ -88,6 +101,7 @@ const Index = () => {
     });
     return () => observer.disconnect();
   }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -97,7 +111,9 @@ const Index = () => {
       setIsMenuOpen(false);
     }
   };
-  return <div className="min-h-screen bg-cream">
+
+  return (
+    <div className="min-h-screen bg-cream">
       {/* Navigation */}
       <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -202,13 +218,25 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => <div key={index} className="service-card">
-                <div className="service-icon">
-                  {service.isImage ? <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain" /> : service.icon}
+            {services.map((service, index) => (
+              <div key={index} className="service-card">
+                <div className="service-icon-container">
+                  {service.isImage ? (
+                    <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain" />
+                  ) : service.isLucideIcon ? (
+                    <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4">
+                      <service.icon className="w-8 h-8 text-white" />
+                    </div>
+                  ) : (
+                    <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4 text-2xl text-white">
+                      {service.icon}
+                    </div>
+                  )}
                 </div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -310,6 +338,8 @@ const Index = () => {
           <p className="text-gray-400 mt-2">Stworzone z pasją dla zdrowia Twojego uśmiechu</p>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
