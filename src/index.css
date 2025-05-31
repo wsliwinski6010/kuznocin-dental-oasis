@@ -77,6 +77,15 @@
   .text-medium { color: var(--text-medium); }
   .text-light { color: var(--text-light); }
 
+  /* Border color classes */
+  .border-cream { border-color: var(--cream); }
+  .border-light-cream { border-color: var(--light-cream); }
+  .border-light-gold { border-color: var(--light-gold); }
+  .border-gold { border-color: var(--gold); }
+  .border-deep-gold { border-color: var(--deep-gold); }
+  .border-dark-brown { border-color: var(--dark-brown); }
+  .border-medium-brown { border-color: var(--medium-brown); }
+
   /* Layout utilities */
   .section-padding {
     @apply py-20 px-6 lg:px-8;
