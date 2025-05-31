@@ -118,7 +118,7 @@
   }
 
   .hero-description {
-    @apply text-lg md:text-xl text-text-medium max-w-2xl mx-auto leading-relaxed;
+    @apply text-lg md:text-xl text-medium max-w-2xl mx-auto leading-relaxed;
   }
 
   .section-title {
@@ -128,7 +128,7 @@
   }
 
   .section-description {
-    @apply text-lg md:text-xl text-text-medium leading-relaxed;
+    @apply text-lg md:text-xl text-medium leading-relaxed;
   }
 
   /* Buttons */
@@ -156,7 +156,7 @@
   }
 
   .advantage-description {
-    @apply text-text-medium leading-relaxed;
+    @apply text-medium leading-relaxed;
   }
 
   .service-card {
@@ -172,7 +172,7 @@
   }
 
   .service-description {
-    @apply text-text-medium leading-relaxed;
+    @apply text-medium leading-relaxed;
   }
 
   .team-card {
@@ -192,7 +192,7 @@
   }
 
   .team-bio {
-    @apply text-text-medium leading-relaxed text-lg;
+    @apply text-medium leading-relaxed text-lg;
   }
 
   .contact-card {
