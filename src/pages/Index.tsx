@@ -2,165 +2,121 @@ import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
-
-  const services = [
-    {
-      title: "Stomatologia zachowawcza",
-      description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
-      icon: "🦷",
-    },
-    {
-      title: "Endodoncja (leczenie kanałowe)", 
-      description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
-      icon: "🔬",
-    },
-    {
-      title: "Tomografia CBCT 3D",
-      description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
-      icon: "📷",
-    },
-    {
-      title: "Radiologia cyfrowa",
-      description: "Precyzyjne zdjęcia RTG i pantomogramy w technologii cyfrowej.",
-      icon: "💻",
-    },
-    {
-      title: "Biodentyna",
-      description: "Innowacyjna, biokompatybilna odbudowa przy głębokich ubytkach próchnicowych.",
-      icon: "🛡️",
-    },
-    {
-      title: "Biżuteria nazębna",
-      description: "Ekskluzywne kryształki i ozdoby dentystyczne najwyższej jakości.",
-      icon: "💎",
-    }
-  ];
-
-  const advantages = [
-    {
-      icon: Award,
-      title: "Wieloletnia ekspertyza",
-      description: "Dekady doświadczenia w najwyższej jakości opiece stomatologicznej"
-    },
-    {
-      icon: Star,
-      title: "Technologia premium", 
-      description: "Najnowocześniejszy sprzęt i materiały światowej klasy"
-    },
-    {
-      icon: Heart,
-      title: "Indywidualna opieka",
-      description: "Holistyczne podejście dostosowane do unikalnych potrzeb"
-    },
-    {
-      icon: Shield,
-      title: "Najwyższe standardy",
-      description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
-    }
-  ];
-
+  const services = [{
+    title: "Stomatologia zachowawcza",
+    description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
+    icon: "🦷"
+  }, {
+    title: "Endodoncja (leczenie kanałowe)",
+    description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
+    icon: "🔬"
+  }, {
+    title: "Tomografia CBCT 3D",
+    description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
+    icon: "📷"
+  }, {
+    title: "Radiologia cyfrowa",
+    description: "Precyzyjne zdjęcia RTG i pantomogramy w technologii cyfrowej.",
+    icon: "💻"
+  }, {
+    title: "Biodentyna",
+    description: "Innowacyjna, biokompatybilna odbudowa przy głębokich ubytkach próchnicowych.",
+    icon: "🛡️"
+  }, {
+    title: "Biżuteria nazębna",
+    description: "Ekskluzywne kryształki i ozdoby dentystyczne najwyższej jakości.",
+    icon: "💎"
+  }];
+  const advantages = [{
+    icon: Award,
+    title: "Wieloletnia ekspertyza",
+    description: "Dekady doświadczenia w najwyższej jakości opiece stomatologicznej"
+  }, {
+    icon: Star,
+    title: "Technologia premium",
+    description: "Najnowocześniejszy sprzęt i materiały światowej klasy"
+  }, {
+    icon: Heart,
+    title: "Indywidualna opieka",
+    description: "Holistyczne podejście dostosowane do unikalnych potrzeb"
+  }, {
+    icon: Shield,
+    title: "Najwyższe standardy",
+    description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
+  }];
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   useEffect(() => {
     const observerOptions = {
       threshold: 0.3,
       rootMargin: '-100px 0px'
     };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
         }
       });
     }, observerOptions);
-
-    document.querySelectorAll('section[id]').forEach((section) => {
+    document.querySelectorAll('section[id]').forEach(section => {
       observer.observe(section);
     });
-
     return () => observer.disconnect();
   }, []);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
       setIsMenuOpen(false);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-cream">
+  return <div className="min-h-screen bg-cream">
       {/* Navigation */}
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${
-        scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'
-      }`}>
+      <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <img 
-                src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" 
-                alt="Joanna Śliwińska Stomatologia" 
-                className="h-12 w-auto"
-              />
+              <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia" className="h-12 w-auto" />
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              {['home', 'about', 'services', 'gallery', 'contact'].map((section) => (
-                <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className={`nav-link ${activeSection === section ? 'active' : ''}`}
-                >
+              {['home', 'about', 'services', 'gallery', 'contact'].map(section => <button key={section} onClick={() => scrollToSection(section)} className={`nav-link ${activeSection === section ? 'active' : ''}`}>
                   {section === 'home' && 'Strona główna'}
                   {section === 'about' && 'O praktyce'}
                   {section === 'services' && 'Usługi'}
                   {section === 'gallery' && 'Gabinet'}
                   {section === 'contact' && 'Kontakt'}
-                </button>
-              ))}
+                </button>)}
             </div>
 
             {/* Mobile menu button */}
-            <button 
-              className="lg:hidden p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <button className="lg:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden bg-white/95 backdrop-blur-lg border-t">
+          {isMenuOpen && <div className="lg:hidden bg-white/95 backdrop-blur-lg border-t">
               <div className="py-6 space-y-4">
-                {['home', 'about', 'services', 'gallery', 'contact'].map((section) => (
-                  <button
-                    key={section}
-                    onClick={() => scrollToSection(section)}
-                    className="block w-full text-left px-6 py-3 text-dark-brown hover:bg-gold/10"
-                  >
+                {['home', 'about', 'services', 'gallery', 'contact'].map(section => <button key={section} onClick={() => scrollToSection(section)} className="block w-full text-left px-6 py-3 text-dark-brown hover:bg-gold/10">
                     {section === 'home' && 'Strona główna'}
                     {section === 'about' && 'O praktyce'}
                     {section === 'services' && 'Usługi'}
                     {section === 'gallery' && 'Gabinet'}
                     {section === 'contact' && 'Kontakt'}
-                  </button>
-                ))}
+                  </button>)}
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </nav>
 
@@ -179,16 +135,10 @@ const Index = () => {
             z najnowoczesnymi technologiami medycznymi
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="btn-primary"
-            >
+            <button onClick={() => scrollToSection('contact')} className="btn-primary">
               Umów wizytę
             </button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="btn-secondary"
-            >
+            <button onClick={() => scrollToSection('services')} className="btn-secondary">
               Nasze usługi
             </button>
           </div>
@@ -212,8 +162,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {advantages.map((advantage, index) => (
-              <Card key={index} className="advantage-card">
+            {advantages.map((advantage, index) => <Card key={index} className="advantage-card">
                 <CardHeader className="text-center">
                   <div className="advantage-icon">
                     <advantage.icon className="w-8 h-8 text-white" />
@@ -225,8 +174,7 @@ const Index = () => {
                     {advantage.description}
                   </CardDescription>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -242,13 +190,11 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="service-card">
+            {services.map((service, index) => <div key={index} className="service-card">
                 <div className="service-icon">{service.icon}</div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -264,9 +210,7 @@ const Index = () => {
                 <span>JS</span>
               </div>
               <CardTitle className="team-name">lek. stom. Joanna Śliwińska</CardTitle>
-              <CardDescription className="team-specialty">
-                Specjalista stomatologii zachowawczej i endodoncji
-              </CardDescription>
+              <CardDescription className="team-specialty">Właściciel gabinetu, specjalista stomatologii zachowawczej i endodoncji</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="team-bio">
@@ -347,17 +291,11 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-black text-white py-12">
         <div className="max-w-6xl mx-auto text-center px-6">
-          <img 
-            src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" 
-            alt="Joanna Śliwińska Stomatologia" 
-            className="h-16 w-auto mx-auto mb-6 opacity-80"
-          />
+          <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia" className="h-16 w-auto mx-auto mb-6 opacity-80" />
           <p>&copy; 2025 Joanna Śliwińska Stomatologia. Wszelkie prawa zastrzeżone.</p>
           <p className="text-gray-400 mt-2">Stworzone z pasją dla zdrowia Twojego uśmiechu</p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
