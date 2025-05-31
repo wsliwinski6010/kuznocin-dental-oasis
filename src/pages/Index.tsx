@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -17,7 +18,8 @@ const Index = () => {
     {
       title: "Endodoncja (leczenie kanałowe)",
       description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
-      icon: "🔧"
+      icon: "/lovable-uploads/211946c1-bf9e-4f97-8423-8ab5fc95263f.png",
+      isImage: true
     },
     {
       title: "Tomografia CBCT 3D",
@@ -47,7 +49,8 @@ const Index = () => {
     {
       title: "EMS Airflow",
       description: "Rewolucja w higienie jamy ustnej! AIRFLOW® PROPHYLAXIS MASTER - bezbolesne i szybkie usunięcie osadów, przebarwień i biofilmu bakteryjnego. Natychmiastowy efekt bielszego uśmiechu!",
-      icon: "💨"
+      icon: "/lovable-uploads/211946c1-bf9e-4f97-8423-8ab5fc95263f.png",
+      isImage: true
     },
     {
       title: "Stomatologia estetyczna",
@@ -232,7 +235,13 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div key={index} className="service-card">
-                <div className="service-icon">{service.icon}</div>
+                <div className="service-icon">
+                  {service.isImage ? (
+                    <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain" />
+                  ) : (
+                    service.icon
+                  )}
+                </div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
               </div>
