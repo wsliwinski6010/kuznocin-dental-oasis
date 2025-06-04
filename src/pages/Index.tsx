@@ -3,12 +3,10 @@ import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, Chevro
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import GoogleMap from '@/components/GoogleMap';
-
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
-  
   const services = [{
     title: "Stomatologia zachowawcza",
     description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
@@ -50,7 +48,6 @@ const Index = () => {
     description: "Korony ceramiczne, mosty protetyczne oraz indywidualne szyny relaksacyjne do leczenia bruksizmu.",
     icon: Crown
   }];
-  
   const advantages = [{
     icon: Award,
     title: "Wieloletnia ekspertyza",
@@ -68,13 +65,11 @@ const Index = () => {
     title: "Najwyższe standardy",
     description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
   }];
-  
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
   useEffect(() => {
     const observerOptions = {
       threshold: 0.3,
@@ -92,7 +87,6 @@ const Index = () => {
     });
     return () => observer.disconnect();
   }, []);
-  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -102,7 +96,6 @@ const Index = () => {
       setIsMenuOpen(false);
     }
   };
-  
   return <div className="min-h-screen bg-cream">
       {/* Navigation */}
       <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
@@ -322,11 +315,10 @@ const Index = () => {
       <footer className="bg-black text-white py-12">
         <div className="max-w-6xl mx-auto text-center px-6">
           <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia" className="h-16 w-auto mx-auto mb-6 opacity-80" />
-          <p>&copy; 2025 Joanna Śliwińska Stomatologia. Wszelkie prawa zastrzeżone.</p>
+          <p>© 2025 Stomatologia lek. stom. Joanna Śliwińska . Wszelkie prawa zastrzeżone.</p>
           <p className="text-gray-400 mt-2">Stworzone z pasją dla zdrowia Twojego uśmiechu</p>
         </div>
       </footer>
     </div>;
 };
-
 export default Index;
