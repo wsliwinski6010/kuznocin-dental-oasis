@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { MapPin, ExternalLink } from 'lucide-react';
 
 const GoogleMap = () => {
   // Adres gabinetu: Kuznocin 91E, 96-500 Kuznocin
@@ -7,43 +8,40 @@ const GoogleMap = () => {
   const encodedAddress = encodeURIComponent(address);
 
   return (
-    <div className="w-full h-96 bg-gray-200 rounded-lg overflow-hidden">
-      <iframe
-        src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodedAddress}&zoom=15`}
-        width="100%"
-        height="100%"
-        style={{ border: 0 }}
-        allowFullScreen={true}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        title="Lokalizacja gabinetu stomatologicznego"
-        className="w-full h-full"
-      />
-      
+    <div className="w-full h-96 bg-gradient-to-br from-light-cream to-cream rounded-lg overflow-hidden relative border border-light-gold">
       {/* Fallback content when API key is not available */}
-      <div className="absolute inset-0 bg-gold/10 flex items-center justify-center">
-        <div className="text-center p-6">
-          <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-center p-8">
+          <div className="w-20 h-20 bg-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <MapPin className="w-10 h-10 text-white" />
           </div>
-          <h4 className="text-lg font-medium text-dark-brown mb-2">Nasza lokalizacja</h4>
-          <p className="text-medium-brown mb-4">Kuznocin 91E<br />96-500 Kuznocin</p>
+          <h4 className="text-2xl font-medium text-dark-brown mb-4">Nasza lokalizacja</h4>
+          <p className="text-lg text-medium-brown mb-6 leading-relaxed">
+            Kuznocin 91E<br />
+            96-500 Kuznocin<br />
+            Polska
+          </p>
           <a 
             href={`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-4 py-2 bg-gold text-white rounded-lg hover:bg-deep-gold transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-gold text-white rounded-lg hover:bg-deep-gold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 font-medium"
           >
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
+            <ExternalLink className="w-5 h-5 mr-2" />
             Otwórz w Google Maps
           </a>
+          
+          <div className="mt-6 text-sm text-medium-brown">
+            <p>Kliknij powyżej, aby zobaczyć szczegółową mapę i uzyskać wskazówki dojazdu</p>
+          </div>
         </div>
       </div>
+      
+      {/* Decorative elements */}
+      <div className="absolute top-4 left-4 w-3 h-3 bg-gold rounded-full opacity-50"></div>
+      <div className="absolute top-8 right-6 w-2 h-2 bg-deep-gold rounded-full opacity-30"></div>
+      <div className="absolute bottom-6 left-8 w-4 h-4 bg-light-gold rounded-full opacity-40"></div>
+      <div className="absolute bottom-4 right-4 w-3 h-3 bg-gold rounded-full opacity-60"></div>
     </div>
   );
 };
