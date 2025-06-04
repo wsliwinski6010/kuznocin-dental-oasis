@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Tooth, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -228,15 +228,13 @@ const Index = () => {
             {services.map((service, index) => (
               <div key={index} className="service-card">
                 <div className="service-icon-container">
-                  {service.isImage ? (
-                    <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4">
+                    {service.isImage ? (
                       <img src={service.icon as string} alt={service.title} className="w-8 h-8 object-contain" />
-                    </div>
-                  ) : (
-                    <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4">
-                      {React.createElement(service.icon as React.ComponentType<any>, { className: "w-8 h-8 text-white" })}
-                    </div>
-                  )}
+                    ) : (
+                      React.createElement(service.icon as React.ComponentType<any>, { className: "w-8 h-8 text-white" })
+                    )}
+                  </div>
                 </div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
