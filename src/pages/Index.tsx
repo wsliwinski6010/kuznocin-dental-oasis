@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Tooth, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,8 +12,7 @@ const Index = () => {
   const services = [{
     title: "Stomatologia zachowawcza",
     description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
-    icon: Tooth,
-    isLucideIcon: true
+    icon: Tooth
   }, {
     title: "Endodoncja (leczenie kanałowe)",
     description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
@@ -21,43 +21,35 @@ const Index = () => {
   }, {
     title: "Tomografia CBCT 3D",
     description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
-    icon: Camera,
-    isLucideIcon: true
+    icon: Camera
   }, {
     title: "Radiologia cyfrowa",
     description: "Precyzyjne zdjęcia RTG i pantomogramy w technologii cyfrowej.",
-    icon: Monitor,
-    isLucideIcon: true
+    icon: Monitor
   }, {
     title: "Biodentyna",
     description: "Innowacyjna, biokompatybilna odbudowa przy głębokich ubytkach próchnicowych.",
-    icon: Shield,
-    isLucideIcon: true
+    icon: Shield
   }, {
     title: "Biżuteria nazębna",
     description: "Ekskluzywne kryształki i ozdoby dentystyczne najwyższej jakości.",
-    icon: Gem,
-    isLucideIcon: true
+    icon: Gem
   }, {
     title: "ICON - usuwanie białych plam",
     description: "Infiltracja żywicą: nowoczesna metoda nieinwazyjnego usuwania białych plam na szkliwie bez wiercenia.",
-    icon: Sparkles,
-    isLucideIcon: true
+    icon: Sparkles
   }, {
     title: "EMS Airflow",
     description: "Rewolucja w higienie jamy ustnej! AIRFLOW® PROPHYLAXIS MASTER - bezbolesne i szybkie usunięcie osadów, przebarwień i biofilmu bakteryjnego. Natychmiastowy efekt bielszego uśmiechu!",
-    icon: Wind,
-    isLucideIcon: true
+    icon: Wind
   }, {
     title: "Stomatologia estetyczna",
     description: "Nowoczesne licówki kompozytowe w technologii flow injection oraz bonding - precyzyjna, przewidywalna i minimalnie inwazyjna poprawa uśmiechu.",
-    icon: Smile,
-    isLucideIcon: true
+    icon: Smile
   }, {
     title: "Protetyka stomatologiczna",
     description: "Korony ceramiczne, mosty protetyczne oraz indywidualne szyny relaksacyjne do leczenia bruksizmu.",
-    icon: Crown,
-    isLucideIcon: true
+    icon: Crown
   }];
 
   const advantages = [{
@@ -124,13 +116,19 @@ const Index = () => {
             
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              {['home', 'about', 'services', 'gallery', 'contact'].map(section => <button key={section} onClick={() => scrollToSection(section)} className={`nav-link ${activeSection === section ? 'active' : ''}`}>
+              {['home', 'about', 'services', 'gallery', 'contact'].map(section => (
+                <button 
+                  key={section} 
+                  onClick={() => scrollToSection(section)} 
+                  className={`nav-link ${activeSection === section ? 'active' : ''}`}
+                >
                   {section === 'home' && 'Strona główna'}
                   {section === 'about' && 'O praktyce'}
                   {section === 'services' && 'Usługi'}
                   {section === 'gallery' && 'Gabinet'}
                   {section === 'contact' && 'Kontakt'}
-                </button>)}
+                </button>
+              ))}
             </div>
 
             {/* Mobile menu button */}
@@ -140,17 +138,25 @@ const Index = () => {
           </div>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && <div className="lg:hidden bg-white/95 backdrop-blur-lg border-t">
+          {isMenuOpen && (
+            <div className="lg:hidden bg-white/95 backdrop-blur-lg border-t">
               <div className="py-6 space-y-4">
-                {['home', 'about', 'services', 'gallery', 'contact'].map(section => <button key={section} onClick={() => scrollToSection(section)} className="block w-full text-left px-6 py-3 text-dark-brown hover:bg-gold/10">
+                {['home', 'about', 'services', 'gallery', 'contact'].map(section => (
+                  <button 
+                    key={section} 
+                    onClick={() => scrollToSection(section)} 
+                    className="block w-full text-left px-6 py-3 text-dark-brown hover:bg-gold/10"
+                  >
                     {section === 'home' && 'Strona główna'}
                     {section === 'about' && 'O praktyce'}
                     {section === 'services' && 'Usługi'}
                     {section === 'gallery' && 'Gabinet'}
                     {section === 'contact' && 'Kontakt'}
-                  </button>)}
+                  </button>
+                ))}
               </div>
-            </div>}
+            </div>
+          )}
         </div>
       </nav>
 
@@ -190,7 +196,8 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {advantages.map((advantage, index) => <Card key={index} className="advantage-card">
+            {advantages.map((advantage, index) => (
+              <Card key={index} className="advantage-card">
                 <CardHeader className="text-center">
                   <div className="advantage-icon">
                     <advantage.icon className="w-8 h-8 text-white" />
@@ -202,7 +209,8 @@ const Index = () => {
                     {advantage.description}
                   </CardDescription>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -222,14 +230,12 @@ const Index = () => {
               <div key={index} className="service-card">
                 <div className="service-icon-container">
                   {service.isImage ? (
-                    <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain" />
-                  ) : service.isLucideIcon ? (
                     <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4">
-                      <service.icon className="w-8 h-8 text-white" />
+                      <img src={service.icon as string} alt={service.title} className="w-8 h-8 object-contain" />
                     </div>
                   ) : (
-                    <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4 text-2xl text-white">
-                      {service.icon}
+                    <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4">
+                      {React.createElement(service.icon as React.ComponentType<any>, { className: "w-8 h-8 text-white" })}
                     </div>
                   )}
                 </div>
