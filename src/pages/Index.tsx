@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import GoogleMap from '@/components/GoogleMap';
+
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
+  
   const services = [{
     title: "Stomatologia zachowawcza",
     description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
@@ -13,8 +16,7 @@ const Index = () => {
   }, {
     title: "Endodoncja (leczenie kanałowe)",
     description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
-    icon: "/lovable-uploads/211946c1-bf9e-4f97-8423-8ab5fc95263f.png",
-    isImage: true
+    icon: Wrench
   }, {
     title: "Tomografia CBCT 3D",
     description: "Najnowocześniejsza diagnostyka trójwymiarowa wykonywana w gabinecie.",
@@ -48,6 +50,7 @@ const Index = () => {
     description: "Korony ceramiczne, mosty protetyczne oraz indywidualne szyny relaksacyjne do leczenia bruksizmu.",
     icon: Crown
   }];
+  
   const advantages = [{
     icon: Award,
     title: "Wieloletnia ekspertyza",
@@ -65,11 +68,13 @@ const Index = () => {
     title: "Najwyższe standardy",
     description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
   }];
+  
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
   useEffect(() => {
     const observerOptions = {
       threshold: 0.3,
@@ -87,6 +92,7 @@ const Index = () => {
     });
     return () => observer.disconnect();
   }, []);
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -96,6 +102,7 @@ const Index = () => {
       setIsMenuOpen(false);
     }
   };
+  
   return <div className="min-h-screen bg-cream">
       {/* Navigation */}
       <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
@@ -204,9 +211,7 @@ const Index = () => {
             {services.map((service, index) => <div key={index} className="service-card">
                 <div className="service-icon-container">
                   <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4">
-                    {service.isImage ? <img src={service.icon as string} alt={service.title} className="w-8 h-8 object-contain" /> : React.createElement(service.icon as React.ComponentType<any>, {
-                  className: "w-8 h-8 text-white"
-                })}
+                    <service.icon className="w-8 h-8 text-white" />
                   </div>
                 </div>
                 <h3 className="service-title">{service.title}</h3>
@@ -293,6 +298,14 @@ const Index = () => {
             </Card>
           </div>
 
+          {/* Google Map Section */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-medium mb-6 text-gold text-center">Znajdź nas na mapie</h3>
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <GoogleMap />
+            </div>
+          </div>
+
           <div className="text-center">
             <h3 className="text-xl font-medium mb-6 text-gold">Metody płatności</h3>
             <div className="flex justify-center items-center space-x-8 text-cream">
@@ -315,4 +328,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
