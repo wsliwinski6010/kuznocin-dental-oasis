@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
-
   const services = [{
     title: "Stomatologia zachowawcza",
     description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
@@ -50,7 +48,6 @@ const Index = () => {
     description: "Korony ceramiczne, mosty protetyczne oraz indywidualne szyny relaksacyjne do leczenia bruksizmu.",
     icon: Crown
   }];
-
   const advantages = [{
     icon: Award,
     title: "Wieloletnia ekspertyza",
@@ -68,13 +65,11 @@ const Index = () => {
     title: "Najwyższe standardy",
     description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
   }];
-
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   useEffect(() => {
     const observerOptions = {
       threshold: 0.3,
@@ -92,7 +87,6 @@ const Index = () => {
     });
     return () => observer.disconnect();
   }, []);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -102,9 +96,7 @@ const Index = () => {
       setIsMenuOpen(false);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-cream">
+  return <div className="min-h-screen bg-cream">
       {/* Navigation */}
       <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -115,19 +107,13 @@ const Index = () => {
             
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              {['home', 'about', 'services', 'gallery', 'contact'].map(section => (
-                <button 
-                  key={section} 
-                  onClick={() => scrollToSection(section)} 
-                  className={`nav-link ${activeSection === section ? 'active' : ''}`}
-                >
+              {['home', 'about', 'services', 'gallery', 'contact'].map(section => <button key={section} onClick={() => scrollToSection(section)} className={`nav-link ${activeSection === section ? 'active' : ''}`}>
                   {section === 'home' && 'Strona główna'}
                   {section === 'about' && 'O praktyce'}
                   {section === 'services' && 'Usługi'}
                   {section === 'gallery' && 'Gabinet'}
                   {section === 'contact' && 'Kontakt'}
-                </button>
-              ))}
+                </button>)}
             </div>
 
             {/* Mobile menu button */}
@@ -137,25 +123,17 @@ const Index = () => {
           </div>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden bg-white/95 backdrop-blur-lg border-t">
+          {isMenuOpen && <div className="lg:hidden bg-white/95 backdrop-blur-lg border-t">
               <div className="py-6 space-y-4">
-                {['home', 'about', 'services', 'gallery', 'contact'].map(section => (
-                  <button 
-                    key={section} 
-                    onClick={() => scrollToSection(section)} 
-                    className="block w-full text-left px-6 py-3 text-dark-brown hover:bg-gold/10"
-                  >
+                {['home', 'about', 'services', 'gallery', 'contact'].map(section => <button key={section} onClick={() => scrollToSection(section)} className="block w-full text-left px-6 py-3 text-dark-brown hover:bg-gold/10">
                     {section === 'home' && 'Strona główna'}
                     {section === 'about' && 'O praktyce'}
                     {section === 'services' && 'Usługi'}
                     {section === 'gallery' && 'Gabinet'}
                     {section === 'contact' && 'Kontakt'}
-                  </button>
-                ))}
+                  </button>)}
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </nav>
 
@@ -195,8 +173,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {advantages.map((advantage, index) => (
-              <Card key={index} className="advantage-card">
+            {advantages.map((advantage, index) => <Card key={index} className="advantage-card">
                 <CardHeader className="text-center">
                   <div className="advantage-icon">
                     <advantage.icon className="w-8 h-8 text-white" />
@@ -208,8 +185,7 @@ const Index = () => {
                     {advantage.description}
                   </CardDescription>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -218,28 +194,24 @@ const Index = () => {
       <section id="services" className="section-padding bg-light-cream">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="section-title">Spektrum usług</h2>
+            <h2 className="section-title">Nasze usługi</h2>
             <p className="section-description">
               Oferujemy kompleksowe usługi stomatologiczne z wykorzystaniem najnowocześniejszych technologii
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="service-card">
+            {services.map((service, index) => <div key={index} className="service-card">
                 <div className="service-icon-container">
                   <div className="w-16 h-16 bg-gold rounded-2xl flex items-center justify-center mb-4">
-                    {service.isImage ? (
-                      <img src={service.icon as string} alt={service.title} className="w-8 h-8 object-contain" />
-                    ) : (
-                      React.createElement(service.icon as React.ComponentType<any>, { className: "w-8 h-8 text-white" })
-                    )}
+                    {service.isImage ? <img src={service.icon as string} alt={service.title} className="w-8 h-8 object-contain" /> : React.createElement(service.icon as React.ComponentType<any>, {
+                  className: "w-8 h-8 text-white"
+                })}
                   </div>
                 </div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -341,8 +313,6 @@ const Index = () => {
           <p className="text-gray-400 mt-2">Stworzone z pasją dla zdrowia Twojego uśmiechu</p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
