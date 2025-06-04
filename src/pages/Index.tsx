@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Tooth, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,7 +11,7 @@ const Index = () => {
   const services = [{
     title: "Stomatologia zachowawcza",
     description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
-    icon: Tooth
+    icon: Heart
   }, {
     title: "Endodoncja (leczenie kanałowe)",
     description: "Precyzyjne leczenie kanałowe w powiększeniu z użyciem zaawansowanych narzędzi pomiarowych X-Smart Pro, Dentsply, Sirona.",
