@@ -8,15 +8,15 @@ const GoogleMap = () => {
   const encodedAddress = encodeURIComponent(address);
 
   return (
-    <div className="w-full h-96 bg-gradient-to-br from-light-cream to-cream rounded-lg overflow-hidden relative border border-light-gold">
+    <div className="w-full h-96 bg-gradient-to-br from-light-cream to-cream rounded-lg overflow-hidden relative border border-light-gold shadow-lg">
       {/* Fallback content when API key is not available */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center bg-white/90 backdrop-blur-sm">
         <div className="text-center p-8">
           <div className="w-20 h-20 bg-gold rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
             <MapPin className="w-10 h-10 text-white" />
           </div>
-          <h4 className="text-2xl font-medium text-dark-brown mb-4">Nasza lokalizacja</h4>
-          <p className="text-lg text-medium-brown mb-6 leading-relaxed">
+          <h4 className="text-2xl font-bold text-dark-brown mb-4">Nasza lokalizacja</h4>
+          <p className="text-lg text-dark-brown mb-6 leading-relaxed font-medium">
             Kuznocin 91E<br />
             96-500 Kuznocin<br />
             Polska

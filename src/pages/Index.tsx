@@ -8,6 +8,7 @@ const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
+  
   const services = [{
     title: "Stomatologia zachowawcza",
     description: "Precyzyjne leczenie próchnicy i odbudowa zębów materiałami najwyższej jakości.",
@@ -66,11 +67,13 @@ const Index = () => {
     title: "Najwyższe standardy",
     description: "Bezwzględne przestrzeganie protokołów bezpieczeństwa"
   }];
+  
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
   useEffect(() => {
     const observerOptions = {
       threshold: 0.3,
@@ -88,6 +91,7 @@ const Index = () => {
     });
     return () => observer.disconnect();
   }, []);
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -97,6 +101,7 @@ const Index = () => {
       setIsMenuOpen(false);
     }
   };
+  
   return <div className="min-h-screen bg-cream">
       {/* Navigation */}
       <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
@@ -141,6 +146,16 @@ const Index = () => {
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cream to-light-gold opacity-90"></div>
+        
+        {/* AI-generated dental illustration - positioned as decorative element */}
+        <div className="absolute top-1/4 right-8 hidden lg:block opacity-20 animate-pulse">
+          <img 
+            src="/lovable-uploads/04e7ef58-c209-46fb-9b40-0380d9dc3331.png" 
+            alt="Dental care illustration" 
+            className="w-64 h-64 object-cover rounded-full shadow-2xl"
+          />
+        </div>
+        
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1 className="hero-title mb-6">
             Joanna Śliwińska
@@ -211,6 +226,49 @@ const Index = () => {
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
               </div>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="section-padding bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Nasz gabinet</h2>
+            <p className="section-description">
+              Nowoczesne wnętrza i profesjonalne wyposażenie dla Twojego komfortu
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="gallery-item">
+              <img 
+                src="/lovable-uploads/14e27ad7-5a91-46ba-ae94-0664ff017ff9.png" 
+                alt="pic1" 
+                className="gallery-image"
+              />
+            </div>
+            <div className="gallery-item">
+              <img 
+                src="/lovable-uploads/81cdac06-e857-4ea0-9e96-47f16247dd77.png" 
+                alt="pic2" 
+                className="gallery-image"
+              />
+            </div>
+            <div className="gallery-item">
+              <img 
+                src="/lovable-uploads/1cf466a3-82ef-4cab-82e1-edc133d21429.png" 
+                alt="pic3" 
+                className="gallery-image"
+              />
+            </div>
+            <div className="gallery-item">
+              <img 
+                src="/lovable-uploads/c9bf53cd-29cf-43fe-9084-8c536ba1137c.png" 
+                alt="pic4" 
+                className="gallery-image"
+              />
+            </div>
           </div>
         </div>
       </section>
