@@ -147,15 +147,6 @@ const Index = () => {
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cream to-light-gold opacity-90"></div>
         
-        {/* AI-generated dental illustration - positioned as decorative element */}
-        <div className="absolute top-1/4 right-8 hidden lg:block opacity-20 animate-pulse">
-          <img 
-            src="/lovable-uploads/04e7ef58-c209-46fb-9b40-0380d9dc3331.png" 
-            alt="Dental care illustration" 
-            className="w-64 h-64 object-cover rounded-full shadow-2xl"
-          />
-        </div>
-        
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1 className="hero-title mb-6">
             Joanna Śliwińska
@@ -181,11 +172,23 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="section-padding bg-white">
+      <section id="about" className="section-padding bg-white relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="section-title">O naszej praktyce</h2>
             <p className="section-description max-w-3xl mx-auto">Nasz gabinet to miejsce łączące doświadczenie, technologię i indywidualne podejście do pacjenta. Oferujemy komfort i nowoczesne metody leczenia w przyjaznej atmosferze.</p>
+          </div>
+
+          {/* AI-generated dental illustration - now visible on all devices */}
+          <div className="flex justify-center mb-16">
+            <div className="relative">
+              <img 
+                src="/lovable-uploads/04e7ef58-c209-46fb-9b40-0380d9dc3331.png" 
+                alt="Nowoczesna opieka stomatologiczna" 
+                className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-2xl border-4 border-gold/20"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent rounded-full"></div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
