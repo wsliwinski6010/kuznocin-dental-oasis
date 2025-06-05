@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, Chevro
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import GoogleMap from '@/components/GoogleMap';
+
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -249,9 +250,14 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card className="contact-card">
               <CardHeader>
-                <div className="contact-icon">
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Kuznocin+91E,+96-500+Kuznocin,+Poland"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-icon hover:bg-deep-gold transition-colors duration-300"
+                >
                   <MapPin className="w-6 h-6" />
-                </div>
+                </a>
                 <CardTitle>Lokalizacja</CardTitle>
               </CardHeader>
               <CardContent>
@@ -269,14 +275,25 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <p className="font-semibold">+48 501 654 398</p>
-                <p className="flex items-center mt-2">
-                  <Mail className="w-4 h-4 mr-2" />
-                  j.m.sliwinska@wp.pl
-                </p>
               </CardContent>
             </Card>
 
             <Card className="contact-card">
+              <CardHeader>
+                <div className="contact-icon">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <CardTitle>Email</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="font-semibold">j.m.sliwinska@wp.pl</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Godziny przyjęć */}
+          <div className="mb-12">
+            <Card className="contact-card max-w-md mx-auto">
               <CardHeader>
                 <div className="contact-icon">
                   <Clock className="w-6 h-6" />
@@ -293,10 +310,7 @@ const Index = () => {
 
           {/* Google Map Section */}
           <div className="mb-12">
-            <h3 className="text-2xl font-medium mb-6 text-gold text-center">Znajdź nas na mapie</h3>
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <GoogleMap />
-            </div>
+            <GoogleMap />
           </div>
 
           <div className="text-center">
