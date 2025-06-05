@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Menu, X, Star, Shield, Heart, Award, ChevronDown, Camera, Monitor, Wrench, Gem, Sparkles, Wind, Crown, Smile, Facebook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import GoogleMap from '@/components/GoogleMap';
@@ -179,15 +180,15 @@ const Index = () => {
             <p className="section-description max-w-3xl mx-auto">Nasz gabinet to miejsce łączące doświadczenie, technologię i indywidualne podejście do pacjenta. Oferujemy komfort i nowoczesne metody leczenia w przyjaznej atmosferze.</p>
           </div>
 
-          {/* AI-generated dental illustration - now visible on all devices */}
+          {/* AI-generated dental illustration - now as rounded square like service icons */}
           <div className="flex justify-center mb-16">
             <div className="relative">
               <img 
                 src="/lovable-uploads/04e7ef58-c209-46fb-9b40-0380d9dc3331.png" 
                 alt="Nowoczesna opieka stomatologiczna" 
-                className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-full shadow-2xl border-4 border-gold/20"
+                className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-cover rounded-2xl shadow-2xl border-4 border-gold/20"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent rounded-full"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent rounded-2xl"></div>
             </div>
           </div>
 
@@ -329,32 +330,43 @@ const Index = () => {
 
             <Card className="contact-card">
               <CardHeader>
-                <div className="contact-icon">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <CardTitle>Telefon</CardTitle>
+                <CardTitle>Kontakt</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="font-semibold">+48 501 654 398</p>
+              <CardContent className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-gold rounded-lg flex items-center justify-center">
+                    <Phone className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="font-semibold">+48 501 654 398</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-gold rounded-lg flex items-center justify-center">
+                    <Mail className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="font-semibold">j.m.sliwinska@wp.pl</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61569139975037"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 bg-gold rounded-lg flex items-center justify-center hover:bg-deep-gold transition-colors duration-300"
+                  >
+                    <Facebook className="w-4 h-4 text-white" />
+                  </a>
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61569139975037"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold hover:text-gold transition-colors duration-300"
+                  >
+                    Facebook
+                  </a>
+                </div>
               </CardContent>
             </Card>
 
             <Card className="contact-card">
-              <CardHeader>
-                <div className="contact-icon">
-                  <Mail className="w-6 h-6" />
-                </div>
-                <CardTitle>Email</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="font-semibold">j.m.sliwinska@wp.pl</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Godziny przyjęć */}
-          <div className="mb-12">
-            <Card className="contact-card max-w-md mx-auto">
               <CardHeader>
                 <div className="contact-icon">
                   <Clock className="w-6 h-6" />
