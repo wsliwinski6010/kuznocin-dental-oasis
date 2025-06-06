@@ -109,7 +109,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia" className="h-12 w-auto" />
+              <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia" className="h-16 w-auto" />
             </div>
             
             {/* Desktop Navigation */}
@@ -401,7 +401,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-black text-white py-12">
         <div className="max-w-6xl mx-auto text-center px-6">
-          <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia" className="h-16 w-auto mx-auto mb-6 opacity-80" />
+          <img src="/lovable-uploads/90825bce-0c80-4b06-a440-2df0d0de5c8d.png" alt="Joanna Śliwińska Stomatologia" className="h-20 w-auto mx-auto mb-6 opacity-80" />
           <p>© 2025 Stomatologia lek. stom. Joanna Śliwińska . Wszelkie prawa zastrzeżone.</p>
           <p className="text-gray-400 mt-2">Stworzone z pasją dla zdrowia Twojego uśmiechu</p>
         </div>
